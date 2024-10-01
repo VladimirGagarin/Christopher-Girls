@@ -1013,7 +1013,7 @@ strong {
     .values-content {
         padding: 10px;
         width: 90%;
-        height: 70vh;
+        height: 80vh;
         overflow-y: auto;
     }
 
@@ -1021,8 +1021,15 @@ strong {
         font-size: 14px;
     }
 
+    .values-button {
+        margin-top: 10px;
+        display: flex;
+        justify-content: space-between;
+    }
+
     .values-button button {
         padding: 4px 8px;
+        font-size: 14px;
     }
 }
 /*------------------------------------------------------------------------------------------------------------------------------------*/
