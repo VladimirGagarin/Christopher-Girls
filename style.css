@@ -1,0 +1,1918 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Animations*/
+
+@keyframes FadeIn {
+	0% {
+		opacity: 0;
+		transform: translateY(-50px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes myAnim {
+	0% {
+		transform: scale(1);
+	}
+
+	50% {
+		transform: scale(1.1);
+	}
+
+	100% {
+		transform: scale(1);
+	}
+}
+
+@keyframes myAnim2 {
+	0% {
+		animation-timing-function: ease-in;
+		opacity: 0;
+		transform: translateY(250px);
+	}
+
+	38% {
+		animation-timing-function: ease-out;
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	55% {
+		animation-timing-function: ease-in;
+		transform: translateY(65px);
+	}
+
+	72% {
+		animation-timing-function: ease-out;
+		transform: translateY(0);
+	}
+
+	81% {
+		animation-timing-function: ease-in;
+		transform: translateY(28px);
+	}
+
+	90% {
+		animation-timing-function: ease-out;
+		transform: translateY(0);
+	}
+
+	95% {
+		animation-timing-function: ease-in;
+		transform: translateY(8px);
+	}
+
+	100% {
+		animation-timing-function: ease-out;
+		transform: translateY(0);
+	}
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+}
+
+@keyframes myAnim3 {
+	0% {
+		opacity: 0;
+		transform: translateY(50px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+/*************************************************************************************************************************/
+
+body {
+    background-color: #f0f0f0;
+    
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* General styles for the header */
+header {
+    background-color: #407184;
+    color: #f0f0f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    position: relative;
+    z-index: 100;
+    border-bottom: 1px solid #f0f0f0;
+    top: 0;
+    left: 0;
+    position: fixed;
+    width: 100%;
+}
+
+.left {
+    display: flex;
+    align-items: center;
+
+}
+
+.logo img {
+    height: 50px;
+    margin-right: 10px;
+}
+
+h1 {
+    font-size: 1.8em;
+    font-weight: bold;
+}
+
+.center .slogan {
+    font-style: italic;
+    color: goldenrod;
+}
+
+/* Styling for navigation */
+.nav-menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    
+}
+
+.nav-menu ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 5px 5px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
+.nav-menu ul li {
+    font-size: 1.1em;
+    position: relative;
+    cursor: pointer;
+    padding: 8px 16px;
+    display: flex;
+    flex-direction: row;
+    border-radius: 10px;
+    transition: color 0.3s, background-color 0.75s;
+}
+
+.nav-menu ul li i {
+    margin-right: 8px;
+}
+
+.nav-menu ul li:hover {
+    background-color: #ccc;
+    color: #407184;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.nav-menu ul li.active{
+    background-color: #ccc;
+    color: #407184;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+/* Hamburger Menu */
+.hamburger-menu {
+    display: none; /* Hidden on larger screens */
+    cursor: pointer;
+    font-size: 2em;
+}
+
+/* Styles for small screens */
+@media (max-width: 800px) {
+    /* Hide the nav menu */
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 120px;
+        right: 20px;
+        background-color: #407184;
+        flex-direction: column;
+        height: auto;
+       border-radius: 10px;
+        padding: 20px;
+        width: 200px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        animation: FadeIn 2s ease 0s 1 normal forwards;
+    }
+
+    /* Make nav menu visible when active */
+    .nav-menu.active {
+        display: flex;
+    }
+
+    /* Show hamburger menu */
+    .hamburger-menu {
+        display: block;
+        color: #f0f0f0;
+        position: absolute; /* Make it absolutely positioned */
+        right: 20px; /* Move it to the right edge */
+        top: 70%; /* Center vertically relative to the header */
+        transform: translateY(-50%); /* Adjust for perfect vertical centering */
+        font-size: 2em; /* Size of the hamburger icon */
+    }
+
+
+    .hamburger-menu span {
+        cursor: pointer;
+    }
+    header{
+        flex-direction: column;
+    }
+    .left{
+        width: 100%;
+        font-size: 12px;
+        text-align: center;
+    }
+    .center{
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        margin-left: 30px;
+        text-align: center;
+    }
+
+    .nav-menu ul {
+        flex-direction: column;
+        align-items: flex-start;
+        box-shadow: none;
+    }
+
+    .nav-menu ul li{
+        border-bottom: 1px solid #ccc;
+        border-radius: 1px;
+        width: 100%;
+    }
+}
+
+
+main {
+    padding: 20px;
+    background-color: #407184;
+    width: 100%;
+    height: auto;
+    margin-top: 100px;
+}
+
+section {
+    display: none; /* All sections hidden by default */
+    padding: 40px;
+    background-color: #f0f0f0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    flex-direction: column;
+    animation: FadeIn 2s ease 0s 1 normal forwards;
+}
+
+section.active{
+    display:flex;
+}
+
+section h2 {
+    font-size: 2em;
+    color: #407184;
+}
+
+section p {
+    font-size: 1.1em;
+    color: #666;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 800px) {
+
+    section {
+        padding: 20px;
+        width: 100%;
+    }
+}
+
+/************************************************************************************************************************************/
+#Home{
+    min-height: 100vh;
+    border-radius: 10px;
+    background-color: #407184;
+    border: 1px solid #f0f0f0;
+    color: #f0f0f0; 
+    align-items: center;
+}
+
+#Home h1, #Home h2, #Home p {
+    color: #f0f0f0;
+}
+
+#Home  span{
+    color: #daa520;
+}
+
+#Home .logo-image{
+    width: 60%;
+    height: 70vh;
+    margin-top: 20px;
+    border: 2px solid #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+}
+
+#Home .logo-image img {
+    width: 100%;
+    height: 100%;
+}
+
+#Home .intro-message-div {
+    width: 60%;
+    height: 20vh;
+    border: 1px solid #f0f0f0;
+    margin-top: 10px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    animation: myAnim 2s ease 0s 1 normal forwards;
+}
+
+.intro-message-div p span{
+    margin-left: 20px;
+    font-size: 24px;
+    color: goldenrod;
+    font-weight: bold;
+    transform: translateY(10px);
+    transition: opacity 0.5s ease-in, transform 0.5s ease-in;
+}
+
+.intro-message-div h2 span.fade-in {
+    animation: slideIn 0.5s forwards;
+    
+}
+
+.intro-message-div h2 span.fade-down {
+    animation: slideDown 0.5s forwards;
+}
+
+/* Media Queries for Small Screens */
+@media (max-width: 800px) {
+    #Home .logo-image {
+        width: 100%; /* Ensure logo covers full width */
+        height: auto; /* Maintain aspect ratio */
+    }
+
+    #Home .intro-message-div {
+        flex-direction: column; /* Stack contents vertically */
+        width: 100%; /* Width adjustment */
+        padding: 15px; /* Increased padding for mobile */
+        border-radius: 5px;
+    }
+
+    .intro-message-div p span {
+        display: inline-block;
+        font-size: 20px; /* Further decrease font size on small screens */
+        margin-top: 10px;
+        font-weight: bold;
+    }
+}
+/******************************************************************************************************************************/
+
+#About {
+    padding: 20px;
+    background-color: #f0f0f0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    min-height: 100vh;
+    border-radius: 10px; /* Round the corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    margin: 0 auto; /* Center the section */
+}
+
+#About h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+#About .about,
+#About .our-mission,
+#About .our-vision,
+#About .core-values,
+#About .principal-greeting {
+    margin-bottom: 20px;
+    background-color: #fff; /* White background for each section */
+    border: 1px solid #407184;
+    padding: 15px; /* Inner padding for content */
+    margin: 15px 0; /* Space between sections */
+    border-radius: 8px; /* Round corners */
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: left;
+    font-size: 20px;
+    min-height: 50vh;
+    width: 100%;
+}
+
+#About .our-vision {
+    background-image: url('vision.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    border-radius: 10px; /* Smooth rounded corners */
+    padding: 20px; /* Add padding for content inside */
+    color: #fff; /* White text for contrast */
+    text-align: center; /* Center-align text */
+    font-size: 1.2rem; /* Slightly larger font size */
+    margin-top: 20px; /* Add spacing above */
+    margin-left: auto;
+    margin-right: auto; /* Center the section */
+    position: relative; /* Enable absolute positioning for overlays */
+    overflow: hidden; /* Hide any overflow */
+}
+
+#About .our-vision::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Add a dark overlay */
+    z-index: 1; /* Ensure overlay appears on top of background */
+}
+
+#About .our-vision h3, #About .our-vision p {
+    position: relative;
+    z-index: 2; /* Ensure text appears above the overlay */
+    color: #f0f0f0;
+    font-size: 1.5rem;
+    margin-top: 10px ;
+}
+
+@media (max-width: 800px) {
+    #About {
+        width: 100%;
+    }
+    #About .our-vision {
+        font-size: 1rem; /* Adjust font size for smaller screens */
+        padding: 15px; /* Reduce padding on smaller screens */
+    }
+}
+
+#About .our-mission {
+    background-image: url('mission.jpeg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    border-radius: 10px; /* Smooth rounded corners */
+    padding: 20px; /* Add padding for content inside */
+    color: #fff; /* White text for contrast */
+    text-align: center; /* Center-align text */
+    font-size: 1.2rem; /* Slightly larger font size */
+    margin-top: 20px; /* Add spacing above */
+    margin-left: auto;
+    margin-right: auto; /* Center the section */
+    position: relative; /* Enable absolute positioning for overlays */
+    overflow: hidden; /* Hide any overflow */
+}
+
+#About .our-mission::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Add a dark overlay */
+    z-index: 1; /* Ensure overlay appears on top of background */
+}
+
+#About .our-mission h3, #About .our-mission p {
+    position: relative;
+    z-index: 2; /* Ensure text appears above the overlay */
+    color: #f0f0f0;
+    font-size: 1.5rem;
+    margin-top: 10px ;
+}
+
+@media (max-width: 800px) {
+    #About .our-mission {
+        font-size: 1rem; /* Adjust font size for smaller screens */
+        padding: 15px; /* Reduce padding on smaller screens */
+    }
+}
+
+#About .core-values {
+    background-image: url('values.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    border-radius: 10px; /* Smooth rounded corners */
+    padding: 20px; /* Add padding for content inside */
+    color: #fff; /* White text for contrast */
+    text-align: center; /* Center-align text */
+    font-size: 1.2rem; /* Slightly larger font size */
+    margin-top: 20px; /* Add spacing above */
+    margin-left: auto;
+    margin-right: auto; /* Center the section */
+    position: relative; /* Enable absolute positioning for overlays */
+    overflow: hidden; /* Hide any overflow */
+}
+
+#About .core-values::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Add a dark overlay */
+    z-index: 1; /* Ensure overlay appears on top of background */
+}
+
+#About .core-values h3 {
+    position: relative;
+    z-index: 2; /* Ensure text appears above the overlay */
+    color: #f0f0f0;
+    font-size: 1.5rem;
+    margin-top: 10px ;
+    
+}
+
+.core-values ul {
+    list-style: none;
+    margin-top: 10px;
+    display:flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    z-index: 2;
+    width: 100%;
+    height: auto;
+    flex-wrap: wrap;
+}
+
+.core-values ul li {
+    color: #f0f0f0;
+    background-color:rgba(67, 137, 192, 0.6);
+    padding: 10px 20px;
+    height: 50px;
+    width: calc(30.33% + 20px);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin-top: 10px;
+    cursor: pointer;
+    margin: 10px 10px;
+    transition: scale 0.75s;
+}
+
+.core-values ul li:hover{
+    transform: scale(1.05);
+    background-color: rgba(227, 160, 15, 0.9);
+}
+
+@media (max-width: 800px) {
+    #About .core-values {
+        font-size: 1rem; /* Adjust font size for smaller screens */
+        padding: 15px; /* Reduce padding on smaller screens */
+    }
+    .core-values ul li{
+        flex-direction: column;
+        flex-direction: column;
+        width: 60%;
+    }
+}
+
+#About .principal-greeting{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 20px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+    flex-direction: row;
+}
+
+#About .principal-image{
+    width: 100px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+#About .principal-image img {
+    width: 100%;
+    height:80%;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#About .greetings {
+    flex: 2;
+    min-height: 100%;
+    font-size: 24px;
+    margin-left: 10px;
+}
+
+#About .greetings p {
+    margin-bottom: 15px;
+}
+
+@media (max-width: 800px) {
+    #About .principal-greeting {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    #About .principal-image{
+        margin-bottom: 20px;
+        height: 40vh;
+        width: 200px;
+    }
+
+    #About .greetings {
+        padding-left: 0;
+        max-width: 100%;
+        text-align: left;
+    }
+}
+
+/* Styling for the about-saints section */
+.about-saints {
+    width: 100%;
+    padding: 30px;
+    background-color: #f9f9f9; /* Light background */
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    text-align: center;
+    margin: 20px auto;
+}
+
+/* Title styling */
+.about-saints h1 {
+    font-size: 36px;
+    color: #007BFF;
+    margin-bottom: 20px;
+}
+
+/* Saint Christopher section */
+.st-chris {
+    margin-bottom: 30px;
+}
+
+.st-chris h2 {
+    font-size: 28px;
+    color: #555; /* Subtle text color */
+    margin-bottom: 15px;
+}
+
+.st-chris img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    margin: 0 auto;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 10px; /* Image shadow */
+    display: block;
+}
+
+/* Paragraphs about Saint Christopher */
+.st-chris p {
+    color: #333; /* Text color */
+    line-height: 1.7; /* Improve readability */
+    margin: 15px 0;
+    font-size: 18px;
+}
+
+/* Styling for suggested saints section */
+.suggested-saints h3 {
+    font-size: 28px;
+    color: #007BFF;
+    margin-bottom: 20px;
+}
+
+/* Suggested saints list styling */
+.suggested-saints ul {
+    list-style-type: none; /* Remove bullet points */
+    padding: 0;
+}
+
+.suggested-saints ul li {
+    font-size: 18px;
+    margin-bottom: 15px;
+    padding: 15px;
+    background-color: #eee; /* Light background for items */
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 10px; /* Subtle shadow */
+    transition: background-color 0.3s ease;
+    text-align: left;
+    border: 1px solid #407184;
+    cursor: pointer;
+}
+
+.suggested-saints ul li:hover {
+    background-color: #007BFF; /* Blue highlight on hover */
+    color: white; /* Change text to white on hover */
+}
+
+.suggested-saints ul li a {
+    color: inherit; /* Inherit the color (blue or white depending on state) */
+    text-decoration: none; /* Remove underline */
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.suggested-saints ul li:hover strong {
+    color: white; /* Ensure link color is white on hover */
+}
+
+strong {
+    color: #007bff; /* Blue color for names */
+}
+
+
+
+.data-history {
+    margin-top: 10px;
+    font-size: 0.9em; /* Slightly smaller font size */
+    color: #000; /* Dark grey for text */
+    display: none;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 800px) {
+    .about-saints {
+        padding: 20px;
+    }
+
+    .about-saints h1 {
+        font-size: 28px;
+    }
+
+    .st-chris h2 {
+        font-size: 24px;
+    }
+
+    .st-chris img {
+        max-width: 100%;
+    }
+
+    .st-chris p {
+        font-size: 16px;
+    }
+
+    .suggested-saints h3 {
+        font-size: 24px;
+    }
+
+    .suggested-saints ul li {
+        font-size: 16px;
+    }
+}
+
+.quotes-about-st-chris {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.quotes-about-st-chris ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.quotes-about-st-chris ul li {
+    margin: 10px 0;
+    position: relative;
+    padding-left: 25px; /* Space for the clipboard icon */
+    width: calc(40% + 20px);
+    height: 10vh;
+    background-color: #ccc;
+    color: #000;
+    border: 1px solid #2c3e50;
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin: 10px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    cursor: pointer;
+    position: relative;
+}
+
+.quotes-about-st-chris ul li:hover{
+    background-color: #0056b3;
+    color: #f0f0f0;
+}
+
+.quotes-about-st-chris ul li.copied{
+    background-color: #004600;
+}
+.quotes-about-st-chris .clipboard-icon {
+    position: absolute;
+    left: 20px;
+    top: 30px;
+    cursor: pointer;
+    margin-top: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-left: 10px;
+}
+
+/* Responsive styles for small screens */
+@media (max-width: 800px) {
+    .quotes-about-st-chris ul {
+        flex-direction: column; /* Stack quotes vertically */
+        align-items: stretch;   /* Stretch quotes to full width */
+    }
+
+    .quotes-about-st-chris ul li {
+        width: 90%;             /* Full width for small screens */
+        height: auto;           /* Allow height to adjust based on content */
+        margin: 10px auto;      /* Center the quotes */
+        padding: 15px;          /* Increase padding for better touch targets */
+    }
+
+    .quotes-about-st-chris .clipboard-icon {
+        top: 50px;              /* Adjust position of the icon */
+        left: -30px;
+        color: #0056b3;
+        font-size: 20px;
+    }
+}
+
+/******************************************************************************************************************************************************************************/
+
+.display-values-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure it appears above other content */
+}
+
+.value-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+}
+
+.value-close:hover{
+    color: #FF0000;
+}
+
+.values-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 60%;
+    animation: myAnim3 2s ease 0s 1 normal forwards;
+}
+
+.value-bible-verse, .value-quote {
+    margin: 10px 0;
+    font-size: 18px;
+    color: #111;
+    border-bottom: 1px solid #407184;
+}
+
+/* Content styling */
+.values-content {
+    text-align: center;
+}
+
+.value-bible-verse h3, .value-quote h3 {
+    font-size: 1.5rem;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.value-bible-verse p, .value-quote p {
+    font-size: 1.2rem;
+    color: #34495e;
+    margin-bottom: 15px;
+}
+
+/* Button container styling */
+.values-button {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+
+/* Button styling */
+.values-button button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-family: 'Verdana', sans-serif;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.values-button button:hover {
+    background-color: #2980b9;
+}
+
+/* Icon styling inside buttons */
+.values-button button i {
+    margin-right: 5px;
+}
+
+/* Bible verse and quote text hover effect */
+.value-bible-verse:hover, .value-quote:hover {
+    color: #2c3e50;
+    text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Optional responsive design for small screens */
+@media (max-width: 800px) {
+    .display-values-overlay {
+        width: 95%;
+        max-width: none;
+    }
+
+    .value-bible-verse h3, .value-quote h3 {
+        font-size: 1.3rem;
+    }
+
+    .values-content {
+        padding: 10px;
+        width: 90%;
+    }
+
+    .value-bible-verse p, .value-quote p {
+        font-size: 1.1rem;
+    }
+
+    .values-button button {
+        padding: 8px 16px;
+    }
+}
+/*------------------------------------------------------------------------------------------------------------------------------------*/
+
+#Curriculum {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#Curriculum h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+#Curriculum h3 {
+    color: #007BFF;
+    margin-bottom: 10px;
+}
+
+#Curriculum p {
+    color: #555;
+    line-height: 1.6;
+}
+
+#Curriculum ul {
+    
+    padding-left: 20px;
+}
+
+#Curriculum ul li {
+    
+    margin-bottom: 5px;
+}
+
+.curriculum-overview,
+.subject-areas,
+.special-programs,
+.curriculum-highlights {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #007BFF;
+    
+}
+
+#Curriculum .subject-areas ul {
+    list-style: none;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin-bottom: 20px;
+}
+
+#Curriculum .subject-areas ul li{
+    background-color: #004600;
+    color: #f0f0f0;
+    width: calc(40% + 20px);
+    height: 20vh;
+    border: 1px solid #34495e;
+    margin: 10px 15px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+#Curriculum .subject-areas ul li strong{
+    text-decoration: underline;
+    text-transform: capitalize;
+}
+#Curriculum .subject-areas ul li:hover{
+    background-color: #007BFF;
+    color: #f0f0f0;
+}
+
+/*------------------------------------------------------------------------------------------------------------------------------------*/
+
+.subject-overview-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    transition: opacity 0.3s ease;
+}
+
+
+.close-overview {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+}
+
+.subject-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 600px;
+    width: 90%;
+    height: 60vh;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation: myAnim3 2s ease 0s 1 normal forwards;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.subject-fact,
+.subject-view {
+    margin-bottom: 30px;
+    border-bottom: 1px solid #007BFF;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.subject-fact {
+    font-size: 18px;
+    color: #333;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.subject-view {
+    font-size: 16px;
+    color: #555;
+}
+.subject-view h2{
+    margin-bottom: 10px;
+    color: #111;
+}
+
+@media (max-width: 800px) {
+    #Curriculum {
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: none;
+    }
+
+    #Curriculum h2 {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+    }
+
+    #Curriculum h3 {
+        font-size: 1.2rem;
+        margin-bottom: 8px;
+    }
+
+    #Curriculum p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    #Curriculum ul {
+        padding-left: 15px;
+    }
+
+    #Curriculum ul li {
+        margin-bottom: 3px;
+        font-size: 0.9rem;
+    }
+
+    .curriculum-overview,
+    .subject-areas,
+    .special-programs,
+    .curriculum-highlights {
+        margin-bottom: 15px;
+        border-bottom: 1px solid #007BFF;
+    }
+
+    /* Subject Areas for Small Screens */
+    #Curriculum .subject-areas ul {
+        flex-direction: column;
+        margin-bottom: 10px;
+        padding: 0;
+    }
+
+    #Curriculum .subject-areas ul li {
+        width: 100%;
+        height: auto;
+        margin: 10px 0;
+        padding: 15px;
+        font-size: 1rem;
+    }
+
+    #Curriculum .subject-areas ul li strong {
+        font-size: 1rem;
+    }
+
+    /* Overlay for Small Screens */
+    .subject-overview-overlay {
+        padding: 10px;
+    }
+
+    .close-overview {
+        top: 10px;
+        right: 10px;
+        font-size: 20px;
+    }
+
+    .subject-content {
+        padding: 10px;
+        max-width: 100%;
+        height: auto;
+    }
+
+    .subject-fact,
+    .subject-view {
+        margin-bottom: 20px;
+        border-bottom: 1px solid #007BFF;
+    }
+
+    .subject-fact {
+        font-size: 1rem;
+    }
+
+    .subject-view {
+        font-size: 0.9rem;
+    }
+
+    .subject-view h2 {
+        font-size: 1.2rem;
+        margin-bottom: 5px;
+    }
+}
+
+.more-button {
+    background-color: #f0f0f0; /* Light background for contrast */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    text-align: center; /* Center the text */
+    margin: 20px auto; /* Center the container */
+    width: 100%;
+}
+
+.more-button h2 {
+    color: #007BFF; /* Heading color */
+    font-size: 24px; /* Size of heading */
+    margin-bottom: 15px; /* Spacing below heading */
+}
+
+.more-button p {
+    color: #555; /* Subtle text color */
+    line-height: 1.6; /* Improve readability */
+    margin-bottom: 20px; /* Spacing below paragraph */
+}
+
+.more-button button {
+    background-color: #007BFF; /* Button color */
+    color: white; /* Text color */
+    padding: 10px 20px; /* Padding for the button */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 16px; /* Button text size */
+    transition: background-color 0.3s ease; /* Transition for hover effect */
+    
+}
+
+.more-button button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+/* Prayer section styling */
+.prayer-section {
+    margin: 20px auto; /* Center the section */
+   width: 100%;
+    padding: 20px; /* Padding for better spacing */
+    text-align: center; /* Center text */
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+
+/* Video styling */
+.prayer-video {
+    display: none; /* Flexbox for centering */
+    justify-content: center; /* Center video */
+    margin: 20px auto; /* Center the video */
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+
+.prayer-video iframe {
+    max-width: 100%; /* Responsive width */
+    height: 80vh; /* Maintain aspect ratio */
+    border-radius: 10px; /* Rounded corners for the iframe */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+}
+
+.prayer-insight {
+    margin-top: 20px; /* Spacing above the insights section */
+    background-color: #f9f9f9; /* Light background for contrast */
+    border-radius: 10px; /* Rounded corners */
+    padding: 20px; /* Padding for spacing */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 10px;
+}
+
+.faq-item {
+    margin-bottom: 15px; /* Spacing between FAQ items */
+    border-bottom: 1px solid #007BFF; /* Bottom border for separation */
+    font-size: 20px;
+    width: 60%;
+    background-color: transparent;
+}
+
+.faq-question {
+    cursor: pointer; /* Pointer cursor on hover */
+    color: #007BFF; /* Blue color for questions */
+    font-weight: bold; /* Bold text */
+    margin-bottom: 20px;
+    background-color: #ccc;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.faq-question:hover{
+    background-color: #0056b3;
+    color: #f0f0f0;
+}
+
+.faq-answer {
+    display: none; /* Initially hide the answers */
+    margin-top: 10px; /* Spacing above the answer */
+    color: #000; /* Subtle color for answers */
+    line-height: 1.5; /* Improve readability */
+}
+
+.faq-answer p{
+    color: #000;
+}
+
+.faq-answer:last-child{
+    text-align: left;
+}
+
+.prayer-insight .more-content{
+    width: 60%;
+    background-color: #fff;
+    color: #007BFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px 10px;
+    border-radius: 10px;
+}
+
+.prayer-insight .more-content h2{
+    color: #007BFF;
+    margin-top: 10px;
+}
+
+.prayer-insight .more-content button{
+    background-color: transparent;
+    border: 2px solid #007BFF;
+    color: #0056b3;
+    font-size: 20px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.prayer-insight .more-content button:hover{
+    background-color: #004600;
+    color: #f0f0f0;
+    border: 2px solid #004600;
+    
+
+}
+
+/* Responsive Styles */
+@media (max-width: 800px) {
+    .more-button {
+        padding: 20px; /* Reduce padding */
+    }
+
+    .more-button h2 {
+        font-size: 20px; /* Smaller heading */
+    }
+
+    .more-button p {
+        font-size: 14px; /* Smaller paragraph text */
+    }
+
+    .more-button button {
+        padding: 8px 15px; /* Smaller button */
+        font-size: 14px; /* Smaller button text */
+    }
+
+    .faq-item {
+        width: 99%; /* Increase width for smaller screens */
+    }
+
+    .faq-question {
+        font-size: 18px; /* Smaller question font size */
+        min-height: 10vh; /* Allow height to adjust */
+        border-radius: 5px;
+    }
+
+    .faq-answer {
+        font-size: 14px; /* Smaller answer font size */
+    }
+}
+
+/*--------------------------------------------------------------------------------------------------------------------------------------*/
+
+#Gallery {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    align-items: center;
+}
+
+#Gallery h2 {
+    text-align: center;
+    color: #000;
+    margin-bottom: 20px;
+}
+
+.galleria {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 10px;
+    background-color: #407184;
+    padding: 10px 20px;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    width: calc(60% + 10px);
+    height: 300px;
+    margin: 10px 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+.caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    text-align: center;
+    padding: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.gallery-item:hover .caption {
+    opacity: 1;
+}
+
+.video-field {
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #407184;
+    padding:10px 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+.video-field video{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    
+}
+
+
+@media (max-width: 800px) {
+    #Gallery {
+        padding: 10px;
+        border-radius: 5px;     
+        align-items: flex-start;
+    }
+
+    #Gallery h2 {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+    }
+
+    .galleria {
+        display: grid;
+        grid-template-columns: 1fr; /* Single column layout for small screens */
+        gap: 10px;
+        padding: 10px;
+        background-color: #407184;
+        border-radius: 5px;
+    }
+
+    .gallery-item {
+        width: 100%; /* Full width for small screens */
+        height: 200px; /* Reduce height for smaller screens */
+        margin: 0;
+        border-radius: 5px;
+        box-shadow: none;
+    }
+
+    .gallery-item img {
+        width: 100%;
+        height: 100%;
+        transition: transform 0.3s ease;
+    }
+
+    .caption {
+        font-size: 0.9rem; /* Reduce font size for captions */
+        padding: 5px; /* Reduce padding */
+        opacity: 1;
+    }
+
+    .video-field {
+        height: 50vh; /* Reduce height of the video field */
+        margin-top: 15px;
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    .video-field video {
+        width: 100%;
+        height: 100%;
+        border-radius: 5px;
+    }
+
+     /* Adjust the photo overlay for small screens */
+     .photo-view-overlay {
+        padding: 10px;
+    }
+
+    .close-photo-overlay {
+        top: 10px;
+        right: 10px;
+        font-size: 20px; /* Smaller close button */
+    }
+
+    .photo-content {
+        flex-direction: column; /* Stack elements vertically */
+        padding: 10px;
+        width: 100%;
+        height: 50vh; /* Allow full height */
+    }
+
+    .left-carousel,
+    .right-preview {
+        font-size: 20px; /* Reduce size of carousel buttons */
+        padding: 5px;
+        width: 20px;
+        height: 20px;
+        margin: 10px;
+    }
+
+    .photo-preview {
+        width: 100%;
+        height: 50vh;
+    }
+
+    .photo-preview img {
+        width: 100%; /* Ensure image scales properly */
+        height: 100%;
+        border-radius: 10px;
+    }
+
+}
+
+
+/****************************************************************************************************************************/
+
+.photo-view-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    transition: opacity 0.3s ease;
+}
+
+
+.close-photo-overlay {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+}
+
+.photo-content {
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 90%;
+    height: 90%;
+    animation: myAnim3 2s ease 0s 1 normal forwards;
+}
+
+.left-carousel,
+.right-preview {
+    font-size: 60px;
+    color: #f0f0f0;
+    cursor: pointer;
+    padding: 10px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 20px;
+    background-color: #407184;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.photo-preview {
+    width: 80%;
+    height: 80%;
+    overflow: hidden;
+}
+
+.photo-preview img {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    border-radius: 10px;
+    animation: fadeIns 0.5s forwards;
+}
+
+@keyframes fadeIns {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* For the left-to-right slide */
+.photo-preview.slide-left img {
+    animation: slideLeft 0.5s forwards;
+}
+
+@keyframes slideLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* For the right-to-left slide */
+.photo-preview.slide-right img {
+    animation: slideRight 0.5s forwards;
+}
+
+@keyframes slideRight {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/*--------------------------------------------------------------------------------------------------------------------------------------------*/
+
+.contact-section {
+    position: relative; /* Allows the pseudo-element to be positioned absolutely */
+    padding: 30px;
+    border-radius: 10px;
+    margin: auto; /* Centers the section */
+    display: none;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Full viewport height */
+    color: white; /* Ensures text is readable against the overlay */
+    text-align: center; /* Centers text for better layout */
+    overflow: hidden; /* Hides overflow if the background image is larger */
+}
+
+/* Pseudo-element for the black overlay */
+.contact-section::before {
+    content: ""; /* Necessary for pseudo-elements */
+    position: absolute; /* Position it absolutely within the section */
+    top: 0; 
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Black overlay with 50% opacity */
+    z-index: 1; /* Place it below the text but above the background */
+}
+
+/* Background image */
+.contact-section::after {
+    content: ""; /* Necessary for pseudo-elements */
+    position: absolute; /* Position it absolutely within the section */
+    top: 0; 
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('logo.png'); /* Change to your image path */
+    background-size: cover; /* Cover the entire section */
+    background-position: center; /* Center the image */
+    z-index: 0; /* Place it below the overlay */
+}
+
+/* Ensure the text is above the overlay */
+.contact-section h2,
+.contact-section p,
+.contact-section ul {
+    position: relative; /* Keeps text above the overlay */
+    z-index: 2; /* Place text above the overlay */
+}
+
+.contact-title {
+    text-align: center;
+    color: #f0f0f0;
+    margin-bottom: 15px;
+    font-size: 2rem; /* Increased font size for better visibility */
+}
+
+.contact-description {
+    text-align: center;
+    color: #f9f9f9;
+    margin-bottom: 20px;
+    font-size: 1.1rem; /* Slightly larger for better readability */
+}
+
+.contact-list {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px; /* Adds space between list items */
+    background-color: #407184;
+    border-radius: 10px;
+    width: 40%;
+    padding: 10px 20px;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+.contact-item:hover{
+    background-color: #f0f0f0;
+    color: #007BFF;
+}
+.contact-item:hover .contact-label,
+.contact-item:hover .contact-link{
+    color: #007BFF;
+}
+.contact-label {
+    color: #f0f0f0; 
+    font-weight: bold;
+    margin-right: 10px; /* Space between label and link */
+}
+
+.contact-link {
+    color: goldenrod;
+    text-decoration: none; /* Removes underline */
+    transition: color 0.3s; /* Smooth color transition */
+    font-weight: bolder;
+}
+
+.contact-link:hover {
+    color: #f0f0f0; /* Darker shade on hover */
+    text-decoration: underline; /* Underline on hover for clarity */
+}
+
+/* Responsive adjustments */
+@media (max-width: 800px) {
+    .contact-section {
+        padding: 20px;
+    }
+
+    .contact-title {
+        font-size: 1.8rem; /* Adjusted font size for smaller screens */
+    }
+
+    .contact-description {
+        font-size: 1rem; /* Adjusted font size */
+    }
+
+    .contact-label {
+        font-size: 0.9rem; /* Smaller font for labels */
+    }
+
+    .contact-link {
+        font-size: 0.9rem; /* Smaller font for links */
+    }
+    .contact-item{
+        width: 99%;
+        overflow: hidden;
+    }
+}
+
+/*********************************************************************************************************************************/
+
+/* Style for the search overlay */
+.search-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure it appears above other content */
+}
+
+/* Style for the close button */
+.search-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+}
+
+/* Style for the search result container */
+.search-result {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 600px;
+    max-height: 80%;
+    overflow-y: auto; /* Scroll if content overflows */
+}
+
+
