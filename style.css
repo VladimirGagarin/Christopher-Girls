@@ -758,8 +758,8 @@ section p {
 }
 
 .suggested-saints ul li:hover {
-    background-color: #007BFF; /* Blue highlight on hover */
-    color: white; /* Change text to white on hover */
+    background-color: #ccc; /* Blue highlight on hover */
+    color: #333; /* Change text to white on hover */
 }
 
 .suggested-saints ul li a {
@@ -770,7 +770,7 @@ section p {
 }
 
 .suggested-saints ul li:hover strong {
-    color: white; /* Ensure link color is white on hover */
+    color: #0056b3; /* Ensure link color is white on hover */
 }
 
 strong {
@@ -1002,8 +1002,7 @@ strong {
 /* Optional responsive design for small screens */
 @media (max-width: 800px) {
     .display-values-overlay {
-        width: 90%;
-
+        width: 99%;
         
     }
 
@@ -1014,7 +1013,7 @@ strong {
     .values-content {
         padding: 10px;
         width: 90%;
-        height: 40vh;
+        height: 70vh;
         overflow-y: auto;
     }
 
@@ -1241,7 +1240,7 @@ strong {
     .subject-content {
         padding: 10px;
         width: 90%;
-        height:40vh;
+        height:60vh;
         overflow-y: auto;
     }
 
