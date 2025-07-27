@@ -348,18 +348,21 @@ h1 {
 
     /* Show hamburger menu */
     .hamburger-menu {
-        display: block;
+        display: inline-block;
         color: #f0f0f0;
         position: absolute; /* Make it absolutely positioned */
         right: 20px; /* Move it to the right edge */
         top: 70%; /* Center vertically relative to the header */
-        transform: translateY(-50%); /* Adjust for perfect vertical centering */
+        transform: translateY(-20%); /* Adjust for perfect vertical centering */
         font-size: 2em; /* Size of the hamburger icon */
+        
     }
 
 
     .hamburger-menu span {
         cursor: pointer;
+        display:block;
+        min-height:20px;
     }
     header{
         flex-direction: column;
@@ -435,11 +438,14 @@ section p {
     main{
         width: 100%;
         min-height: 100vh;
+        padding: 0;
+        
     }
     section {
-        padding: 20px;
+        padding: 0;
         width: 100%;
         height: 100%;
+        margin-top: 30px;
     }
 }
 
@@ -627,6 +633,10 @@ section p {
         font-size: 12px; /* Adjust font size for smaller screens */
         padding: 10px; /* Reduce padding on smaller screens */
     }
+    .about{
+        width: 100%;
+        padding: 0;
+    }
 }
 
 #About .our-mission {
@@ -706,6 +716,11 @@ section p {
 @media (max-width: 800px) {
     .facilities ul {
         grid-template-columns:  1fr; /* Two columns for medium screens */
+        padding: 0;
+    }
+
+    .facilities li li {
+        width: 100%;
     }
 
     .facilities h2{
@@ -719,7 +734,7 @@ section p {
 @media (max-width: 800px) {
     #About .our-mission {
         font-size: 12px; /* Adjust font size for smaller screens */
-        padding: 10px; /* Reduce padding on smaller screens */
+        padding: 0; /* Reduce padding on smaller screens */
     }
 }
 
@@ -876,9 +891,16 @@ section p {
     }
 
     #About .principal-image{
-        height: 40vh;
-        width: 200px;
+        height:300px;
+        width: 300px;
+        border-radius: 10px;
         
+    }
+
+    #About .principal-image img{
+        width: 100%;
+        height: 100%;
+        border-radius: inherit;
     }
 
     #About .greetings {
@@ -1021,7 +1043,28 @@ strong {
 
 .data-history .history-text p{
     word-spacing: 5px;
+    text-align: justify;
+    font-weight: bold;
 }
+
+.cta-link {
+  display: inline-block;
+  background-color: #007b5e; /* St. Christopher green-blue theme */
+  color: white;
+  font-weight: bold;
+  padding: 12px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  margin: 20px 0;
+}
+
+.cta-link:hover {
+  background-color: #005f47;
+  transform: translateY(-2px);
+}
+
 
 /* Responsive design for smaller screens */
 @media (max-width: 800px) {
