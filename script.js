@@ -1,1 +1,468 @@
-document.addEventListener("DOMContentLoaded",(()=>{document.querySelector(".hamburger-menu").addEventListener("click",(function(){document.querySelector(".nav-menu").classList.toggle("active")})),setTimeout((function(){document.getElementById("loading-div").style.display="none"}),15e3);const e=document.querySelectorAll("nav ul li");e[0].classList.add("active");const t=document.querySelectorAll("main section");t[0].classList.add("active"),e.forEach(((o,n)=>{o.addEventListener("click",(()=>{e.forEach((e=>{e.classList.remove("active")})),o.classList.add("active"),t.forEach((e=>{e.classList.remove("active")})),t.forEach(((e,t)=>{if(n===t){e.classList.add("active");const t=document.getElementById("loading-div");t.style.display="flex",setTimeout((function(){t.style.display="none"}),1e4)}0===t&&r()})),document.querySelector(".nav-menu").classList.remove("active")}))}));const o=["THE PRESENCE OF GOD","Goodness and Excellence","The power of Prayer","The value of time","The worth of character","The success of perseverance","The pleasure of working","The virtue of patience","Inspiring Ambition and Courage","The obligation of duty","The influence of example","The improvement of talent"],n=document.querySelector("#message");let c,l=0;function r(){n.classList.add("fade-down"),setTimeout((()=>{n.classList.remove("fade-down"),n.textContent=o[l],n.classList.add("fade-in"),l=(l+1)%o.length}),500)}c=setInterval(r,2e3);const i=document.querySelectorAll(".core-values ul li"),s=document.querySelector(".display-values-overlay"),a=document.querySelector(".value-close"),d=document.querySelectorAll(".values-button button"),u=d[0],y=d[1];i.forEach((e=>{e.addEventListener("click",(()=>{s.style.display="flex",function(e){const t=e.getAttribute("data-quote"),o=e.getAttribute("data-author"),n=e.getAttribute("data-bible-verse"),c=e.getAttribute("data-bible-line"),l=document.querySelector(".value-bible-verse"),r=document.querySelector(".value-quote");l.innerHTML="",r.innerHTML="",l.innerHTML=`<h3> ${n}</h3> <br> <p> ${c}</p>`,r.innerHTML=`<h3>“ ${t} ”</h3> <br> <p>${o}</p>`,u.addEventListener("click",(()=>{const e=t+" - "+o;navigator.clipboard.writeText(e).then((()=>{u.textContent="Copied",setTimeout((()=>{u.textContent="Copy Quote"}),2e3)})).catch((e=>{console.error("Failed to copy: ",e),u.textContent="Failed",setTimeout((()=>{u.textContent="Copy Quote"}),2e3)}))})),y.addEventListener("click",(()=>{const e=n+" - "+c;navigator.clipboard.writeText(e).then((()=>{y.textContent="Copied",setTimeout((()=>{y.textContent="Copy Bible verse"}),2e3)})).catch((e=>{console.error(`Failed to copy ${e}`),y.textContent="Failed to copy",setTimeout((()=>{y.textContent="Copy Bible verse"}),2e3)}))}))}(e)}))})),a.onclick=()=>{s.style.display="none"};const m=document.querySelectorAll(".subject-areas ul li"),h=document.querySelector(".subject-overview-overlay"),v=document.querySelector(".close-overview"),p=document.querySelector(".subject-fact"),f=document.querySelector(".subject-view");v.onclick=()=>{h.style.display="none"},m.forEach((e=>{e.addEventListener("click",(()=>{h.style.display="flex",function(e){const t=e.getAttribute("data-fact"),o=e.getAttribute("data-subdisciplines");p.innerHTML="",f.innerHTML="",p.innerHTML=`<h3>“ ${t} ”</h3>`,f.innerHTML=`<h2>We provide this disciplines : </h2><h3>${o} and  more </h3>`}(e)}))}));const L=document.querySelectorAll(".gallery-item img"),b=document.querySelector(".photo-view-overlay"),g=document.querySelector(".close-photo-overlay"),q=document.querySelector(".left-carousel"),S=document.querySelector(".right-preview"),E=document.querySelector(".photo-preview");let T=0;function x(e,t){const o=L[e].src;e<0||e>=L.length?b.style.display="none":(E.classList.remove("slide-left","slide-right"),"next"===t?E.classList.add("slide-right"):"prev"===t&&E.classList.add("slide-left"),E.innerHTML=`<img src='${o}' alt='Image_${e+1}'>`)}g.onclick=()=>{b.style.display="none"},L.forEach(((e,t)=>{e.addEventListener("click",(function(){b.style.display="flex",T=t,x(T,"next")}))})),S.addEventListener("click",(()=>{T=(T+1)%L.length,x(T,"next")})),q.addEventListener("click",(()=>{T=(T-1+L.length)%L.length,x(T,"prev")}));const C=document.querySelector(".more-button button"),k=document.querySelector(".prayer-section"),w=document.querySelector(".prayer-video"),A=document.querySelectorAll(".prayer-insight .faq-item"),M=document.querySelector(".more-content button");let H=!1,I=!1;C.addEventListener("click",(()=>{H=!H,H?(k.style.display="flex",C.textContent="Minimize"):(C.textContent="Yes Please",k.style.display="none",w.style.display="none",document.querySelector(".more-button").scrollIntoView({behavior:"smooth",block:"center"}))})),M.addEventListener("click",(()=>{I=!I,I?(w.style.display="flex",M.textContent="Minimize",A.forEach((e=>{e.querySelectorAll(".faq-answer").forEach((e=>e.style.display="none"))})),w.scrollIntoView({behavior:"smooth",block:"center"})):(w.style.display="none",M.textContent="Yes Please")})),A.forEach((e=>{e.addEventListener("click",(()=>{!function(e){const t=e.querySelector(".faq-answer");"none"===t.style.display||""===t.style.display?(t.style.display="block",t.classList.add("show")):(t.style.display="none",t.classList.remove("show"))}(e)}))}));const $=document.querySelectorAll(".suggested-saints li"),F=document.querySelector(".search-overlay"),O=document.querySelector(".search-close"),j=document.querySelector(".search-result"),B=document.querySelector(".search-image");O.onclick=()=>{F.style.display="none"},$.forEach((e=>{e.addEventListener("click",(()=>{const t=e.querySelector(".data-history");"none"===t.style.display||""===t.style.display?(t.style.display="flex",e.scrollIntoView({behavior:"smooth",block:"center"})):t.style.display="none"}))})),document.querySelectorAll(".quotes-about-st-chris .clipboard-icon").forEach((e=>{e.addEventListener("click",(()=>{const t=e.getAttribute("data-quote")+"- St. Christopher";navigator.clipboard.writeText(t).then((()=>{e.innerHTML='<i class="fas fa-check"></i>',setTimeout((()=>{e.innerHTML=""}),2e3)})).catch((e=>{console.error("Could not copy text: ",e)}))}))})),document.querySelectorAll(".quotes-about-st-chris li").forEach((e=>{e.addEventListener("click",(()=>{const t=e.textContent.trim()+"- St. Christopher";navigator.clipboard.writeText(t).then((()=>{e.classList.add("copied"),setTimeout((()=>{e.classList.remove("copied")}),2e3)})).catch((e=>{console.error("Could not copy text: ",e)}))}))}));document.querySelectorAll(".guidance ul li").forEach((e=>{e.addEventListener("click",(()=>{!function(e,t){F.style.display="flex",j.innerHTML=`<h2> ${e}</h2>`,B.innerHTML=t?`<img src="${t}" alt="Inspiration Image">`:""}(e.getAttribute("data-inspiring"),e.getAttribute("data-img"))}))}))})),document.addEventListener("DOMContentLoaded",(function(){const e=document.querySelectorAll(".gallery-item"),t=new IntersectionObserver(((e,t)=>{e.forEach((e=>{e.isIntersecting&&(e.target.classList.add("slide-in"),t.unobserve(e.target))}))}),{root:null,threshold:.2});e.forEach((e=>{t.observe(e)}))}));
+document.addEventListener('DOMContentLoaded', () => {
+    // JavaScript to toggle the nav menu on small screens
+    document.querySelector('.hamburger-menu').addEventListener('click', function() {
+        document.querySelector('.nav-menu').classList.toggle('active');
+    });
+
+    setTimeout(function() {
+        const loadingDiv = document.getElementById('loading-div');
+        loadingDiv.style.display = 'none'; // Hide the loading div after 2 minutes
+    }, 15000); 
+
+
+
+    const navLinks = document.querySelectorAll("nav ul li");
+    navLinks[0].classList.add("active");
+
+    const sections = document.querySelectorAll("main section");
+    sections[0].classList.add("active");
+
+    // Enable browser history support
+    function activateSection(index) {
+      navLinks.forEach((n) => n.classList.remove("active"));
+      sections.forEach((s) => s.classList.remove("active"));
+
+      navLinks[index].classList.add("active");
+      sections[index].classList.add("active");
+
+      const sectionId = navLinks[index].getAttribute("data-id");
+      window.history.pushState({ section: sectionId }, "", `#${sectionId}`);
+
+      const loadingDiv = document.getElementById("loading-div");
+      if (loadingDiv) {
+        loadingDiv.style.display = "flex";
+        setTimeout(() => {
+          loadingDiv.style.display = "none";
+        }, 10000);
+      }
+
+      if (index === 0) {
+        displayMessage();
+      }
+
+      document.querySelector(".nav-menu").classList.remove("active");
+    }
+
+    // Handle click events
+    navLinks.forEach((nav, index) => {
+      nav.addEventListener("click", () => {
+        activateSection(index);
+      });
+    });
+
+    // On page load, activate section from URL hash
+    window.addEventListener("load", () => {
+      const hash = window.location.hash.substring(1);
+      if (hash) {
+        const navIndex = Array.from(navLinks).findIndex(
+          (nav) => nav.getAttribute("data-id") === hash
+        );
+        if (navIndex !== -1) {
+          activateSection(navIndex);
+        }
+      }
+    });
+
+    // Handle browser back/forward
+    window.addEventListener("popstate", (e) => {
+      const sectionId = window.location.hash.substring(1);
+      const navIndex = Array.from(navLinks).findIndex(
+        (nav) => nav.getAttribute("data-id") === sectionId
+      );
+      if (navIndex !== -1) {
+        activateSection(navIndex);
+      }
+    });
+
+
+   const introMessage = [
+     "THE PRESENCE OF GOD",
+     "Goodness and Excellence",
+     "The power of Prayer",
+     "The value of time",
+     "The worth of character",
+     "The success of perseverance",
+     "The pleasure of working",
+     "The virtue of patience",
+     "Inspiring Ambition and Courage",
+     "The obligation of duty",
+     "The influence of example",
+     "The improvement of talent",
+
+     // Additional profound faiths
+     "The Light of Christ in Learning",
+     "The Strength of Faith in Action",
+     "The Grace of Forgiveness",
+     "The Gift of Compassion",
+     "The Hope Found in Scripture",
+     "The Joy of Serving Others",
+     "The Beauty of Holiness",
+     "The Fire of the Holy Spirit",
+     "The Peace that Prayer Brings",
+     "The Love of God in Every Girl",
+   ];
+
+    
+
+    const messageSpan = document.querySelector('#message');
+    let messageIndex = 0;
+   
+    
+    function displayMessage() {
+        // Fade-out animation for the current message
+        messageSpan.classList.add('fade-down');
+    
+        // After fade-out, update the text content and apply fade-in
+        setTimeout(() => {
+            messageSpan.classList.remove('fade-down'); // Remove fade-out class
+            messageSpan.textContent = introMessage[messageIndex]; // Set the new message
+            messageSpan.classList.add('fade-in'); // Apply fade-in class
+    
+            // Move to the next message in the list
+            messageIndex = (messageIndex + 1) % introMessage.length; // Loop through messages
+        }, 500); // Adjust timing for fade-out and message change
+    }
+    
+    // Start interval to display each full message every 2 seconds
+    timeoutMessage = setInterval(displayMessage, 2000);
+    
+    const coreValues = document.querySelectorAll('.core-values ul li');
+    const valOverlay = document.querySelector('.display-values-overlay');
+    const closeVal = document.querySelector('.value-close');
+    const copyBtns = document.querySelectorAll('.values-button button');
+    const copyQuoteBtn = copyBtns[0];
+    const copyBibleBtn = copyBtns[1];
+
+    coreValues.forEach(values => {
+        values.addEventListener('click', () => {
+            valOverlay.style.display = 'flex';
+            showQuoteAndBibleVerse(values);
+        })
+    });
+
+    closeVal.onclick = () => {valOverlay.style.display = 'none'};
+
+    function showQuoteAndBibleVerse(element) {
+        const quote =  element.getAttribute('data-quote');
+        const author = element.getAttribute('data-author');
+        const bibleVerse = element.getAttribute('data-bible-verse');
+        const bibleLine = element.getAttribute('data-bible-line');
+
+        const bibleVerseField = document.querySelector('.value-bible-verse');
+        const quoteField = document.querySelector('.value-quote');
+
+        bibleVerseField.innerHTML = '';
+        quoteField.innerHTML = '';
+
+        bibleVerseField.innerHTML = `<h3> ${bibleVerse}</h3> <br> <p> ${bibleLine}</p>`;
+        quoteField.innerHTML = `<h3>“ ${quote} ”</h3> <br> <p>${author}</p>`;
+
+        copyQuoteBtn.addEventListener('click', () => {
+            const quoteToBeCopied = quote + " - " + author;  // Fixed variable name and added dash between quote and author
+            navigator.clipboard.writeText(quoteToBeCopied).then(() => {
+                copyQuoteBtn.textContent = "Copied";  
+                
+                setTimeout(() => {
+                    copyQuoteBtn.textContent = "Copy Quote";
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+                copyQuoteBtn.textContent = "Failed";  
+                
+                setTimeout(() => {
+                    copyQuoteBtn.textContent = "Copy Quote";
+                }, 2000);
+            });
+        });
+
+        copyBibleBtn.addEventListener('click', () => {
+            const bibletobeCopied = bibleVerse + ' - ' + bibleLine;
+
+            navigator.clipboard.writeText(bibletobeCopied).then(() => {
+                copyBibleBtn.textContent = 'Copied';
+
+                setTimeout(() => {
+                    copyBibleBtn.textContent = 'Copy Bible verse';
+                }, 2000)
+            }).catch(err => {
+                console.error(`Failed to copy ${err}`);
+
+                copyBibleBtn.textContent = 'Failed to copy';
+
+                setTimeout(() => {
+                    copyBibleBtn.textContent = 'Copy Bible verse';
+                }, 2000)
+            })
+        })
+        
+    }
+
+   const subjects = document.querySelectorAll('.subject-areas ul li');
+   const subjectOverlay = document.querySelector('.subject-overview-overlay');
+   const closeSuboverlay = document.querySelector('.close-overview');
+   const subjFact = document.querySelector('.subject-fact');
+   const subjView = document.querySelector('.subject-view');
+
+
+   closeSuboverlay.onclick = () => { subjectOverlay.style.display = 'none';}
+
+   subjects.forEach(sub => {
+        sub.addEventListener('click', () => {
+            subjectOverlay.style.display = 'flex';
+            displaysubjectView(sub);
+        });
+   });
+
+   function  displaysubjectView(element) {
+        const  fact = element.getAttribute('data-fact');
+        const subDisciplines = element.getAttribute('data-subdisciplines');
+
+        subjFact.innerHTML = '';
+        subjView.innerHTML = '';
+
+        subjFact.innerHTML = `<h3>“ ${fact} ”</h3>`;
+        subjView.innerHTML = `<h2>We provide this disciplines : </h2><h3>${subDisciplines} and  more </h3>`;
+   }
+
+
+   const galleryPhotos = document.querySelectorAll('.gallery-item img');
+   const photoOverlay = document.querySelector('.photo-view-overlay');
+   const closePhoto = document.querySelector('.close-photo-overlay');
+   const leftCarousel = document.querySelector('.left-carousel');
+   const rightCarousel = document.querySelector('.right-preview');
+   const photoPreview = document.querySelector('.photo-preview');
+
+   let currentIndex = 0;
+
+   closePhoto.onclick = () => {photoOverlay.style.display = 'none';}
+
+   galleryPhotos.forEach((photo, index) => {
+        photo.addEventListener('click', function () {
+            photoOverlay.style.display = 'flex';
+            currentIndex = index;
+            displayphotoview(currentIndex, 'next');
+        })
+   });
+
+  
+    // Function to display the photo with animation
+    function displayphotoview(index, direction) {
+        const photoSrc = galleryPhotos[index].src; // Get the image source
+
+        if (index < 0 || index >= galleryPhotos.length) {
+            photoOverlay.style.display = 'none';
+            return; // Do nothing if the index is out of bounds
+        }
+
+        // Clear previous animation classes
+        photoPreview.classList.remove('slide-left', 'slide-right');
+
+        // Apply the correct animation class based on the direction
+        if (direction === 'next') {
+            photoPreview.classList.add('slide-right');
+        } else if (direction === 'prev') {
+            photoPreview.classList.add('slide-left');
+        }
+
+
+        // Update the image
+        photoPreview.innerHTML = `<img src='${photoSrc}' alt='Image_${index + 1}'>`;
+
+        
+    }
+
+    // Event for the next button (right arrow)
+    rightCarousel.addEventListener('click', () => {
+       currentIndex = (currentIndex + 1) % galleryPhotos.length; // Move to the next image, loop back to first image if at the end
+        displayphotoview(currentIndex, "next");
+    });
+
+    // Event for the previous button (left arrow)
+    leftCarousel.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + galleryPhotos.length) % galleryPhotos.length; // Move to the previous image, loop to last image if at the start
+        displayphotoview(currentIndex, "prev");
+    });
+
+
+    const  moreBtn = document.querySelector('.more-button button');
+    const prayerSect = document.querySelector('.prayer-section');
+    const prayerVid = document.querySelector('.prayer-video');
+    const faqItems = document.querySelectorAll('.prayer-insight .faq-item');
+    const  addmoreBtn = document.querySelector('.more-content button');
+
+    let isExapnded = false;
+    let IsExpanse = false
+
+    moreBtn.addEventListener('click', () => {
+        isExapnded = !isExapnded;
+
+        if(isExapnded) {
+            prayerSect.style.display = 'flex';
+            moreBtn.textContent = 'Minimize';
+        }
+        else{
+            moreBtn.textContent = 'Yes Please';
+            prayerSect.style.display = 'none';
+            prayerVid.style.display = 'none';
+            document.querySelector('.more-button').scrollIntoView({
+                behavior: 'smooth',
+                block: 'center'
+            });
+        }
+    });
+
+    addmoreBtn.addEventListener('click', () => {
+        IsExpanse = !IsExpanse;
+        
+        if(IsExpanse) {
+            prayerVid.style.display = 'flex';
+            addmoreBtn.textContent = "Minimize";
+            faqItems.forEach(item => {
+                const allAns = item.querySelectorAll('.faq-answer');
+                allAns.forEach(f => f.style.display = 'none');
+            });
+
+            prayerVid.scrollIntoView({
+                behavior: 'smooth',
+                block: 'center'
+            });
+        }
+        else{
+            prayerVid.style.display = 'none';
+            addmoreBtn.textContent = "Yes Please";
+            
+        }
+    })
+
+
+    faqItems.forEach(faq => {
+        faq.addEventListener('click', () => {
+            toggleAnswer(faq);
+        })
+    })
+
+    function toggleAnswer(element) {
+        const answer = element.querySelector('.faq-answer'); // Get the answer related to the clicked question
+        if (answer.style.display === "none" || answer.style.display === "") {
+            answer.style.display = "block"; // Show the answer
+            answer.classList.add('show');
+        } else {
+            answer.style.display = "none"; // Hide the answer
+            answer.classList.remove('show');
+        }
+    }
+    
+
+    const newSaints = document.querySelectorAll('.suggested-saints li');
+    const searchOverlay = document.querySelector('.search-overlay');
+    const searchClose = document.querySelector('.search-close');
+    const searchContent = document.querySelector('.search-result');
+    const searchImage = document.querySelector('.search-image');
+
+    searchClose.onclick = () => {searchOverlay.style.display = 'none'};
+
+    newSaints.forEach(saint => {
+        saint.addEventListener('click', () => {
+            const dataHistory = saint.querySelector('.data-history');
+                // Toggle visibility
+                if (dataHistory.style.display === 'none' || dataHistory.style.display === '') {
+                    dataHistory.style.display = 'flex'; // Show
+                    saint.scrollIntoView({
+                        behavior:'smooth',
+                        block: "center"
+                    })
+                } else {
+                    dataHistory.style.display = 'none'; // Hide
+                }
+        });
+    });
+
+   
+
+    document.querySelectorAll('.quotes-about-st-chris .clipboard-icon').forEach(icon => {
+        icon.addEventListener('click', () => {
+            const quote = icon.getAttribute('data-quote') + "- St. Christopher";
+            navigator.clipboard.writeText(quote)
+                .then(() => {
+                    // Change icon to checkmark
+                    icon.innerHTML = '<i class="fas fa-check"></i>';
+                    
+                    // Set timeout to revert back to clipboard icon after 2 seconds (2000 milliseconds)
+                    setTimeout(() => {
+                        icon.innerHTML = ''; // Reverting back to clipboard icon
+                    }, 2000); // Change this duration as needed
+                })
+                .catch(err => {
+                    console.error('Could not copy text: ', err);
+                });
+        });
+    });
+
+    document.querySelectorAll('.quotes-about-st-chris li').forEach(li => {
+        li.addEventListener('click', () => {
+            const quote = li.textContent.trim() + "- St. Christopher";
+            navigator.clipboard.writeText(quote)
+                .then(() => {
+                    // Change icon to checkmark
+                    li.classList.add('copied');
+                    
+                    // Set timeout to revert back to clipboard icon after 2 seconds (2000 milliseconds)
+                    setTimeout(() => {
+                         li.classList.remove('copied'); // Reverting back to clipboard icon
+                    }, 2000); // Change this duration as needed
+                })
+                .catch(err => {
+                    console.error('Could not copy text: ', err);
+                });
+        });
+    });
+    
+
+    const allguidances = document.querySelectorAll('.guidance ul li');
+
+    allguidances.forEach(guidance => {
+        guidance.addEventListener('click', () => {
+            const inspiration = guidance.getAttribute('data-inspiring');
+            const image  = guidance.getAttribute('data-img');
+            showInspiration(inspiration, image);
+        })
+    });
+
+    function showInspiration(inspiration, image) {
+        searchOverlay.style.display = 'flex';
+        searchContent.innerHTML = `<h2> ${inspiration}</h2>`;
+
+        if (image) {
+            searchImage.innerHTML = `<img src="${image}" alt="Inspiration Image">`;
+        } else {
+            searchImage.innerHTML = ''; // Clear the image container if no image is provided
+        }
+       
+    }
+
+
+});
+
+//-------------------------------------------------------------------------------------------------------------------------
+
+document.addEventListener("DOMContentLoaded", function () {
+    const galleryItems = document.querySelectorAll(".gallery-item");
+
+    const observerOptions = {
+        root: null, // Use the viewport
+        threshold: 0.2 // Trigger when 10% of the item is visible
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('slide-in'); // Add the slide-in class when in view
+                observer.unobserve(entry.target); // Stop observing after animation is triggered
+            }
+        });
+    }, observerOptions);
+
+    galleryItems.forEach(item => {
+        observer.observe(item);
+    });
+});
