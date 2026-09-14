@@ -1,13 +1,49 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Theme toggle for light/dark mode (header + mobile nav)
+    const themeToggles = document.querySelectorAll('.theme-toggle');
+    const syncThemeLabels = () => {
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        themeToggles.forEach((themeToggle) => {
+            const navLabel = themeToggle.querySelector('.nav-theme-label');
+            if (navLabel) {
+                navLabel.textContent = isDark ? 'Light Mode' : 'Dark Mode';
+            }
+        });
+    };
+    syncThemeLabels();
+    themeToggles.forEach((themeToggle) => {
+        themeToggle.addEventListener('click', () => {
+            const root = document.documentElement;
+            const current = root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+            const next = current === 'dark' ? 'light' : 'dark';
+            root.setAttribute('data-theme', next);
+            try {
+                localStorage.setItem('theme', next);
+            } catch (e) {}
+            const meta = document.querySelector('meta[name="theme-color"]');
+            if (meta) {
+                meta.setAttribute('content', next === 'dark' ? '#1e3a8a' : '#0d1b3e');
+            }
+            syncThemeLabels();
+        });
+    });
+
     // JavaScript to toggle the nav menu on small screens
     document.querySelector('.hamburger-menu').addEventListener('click', function() {
-        document.querySelector('.nav-menu').classList.toggle('active');
+        const navMenu = document.querySelector('.nav-menu');
+        const isActive = navMenu.classList.toggle('active');
+        this.setAttribute('aria-expanded', isActive);
     });
 
     setTimeout(function() {
         const loadingDiv = document.getElementById('loading-div');
-        loadingDiv.style.display = 'none'; // Hide the loading div after 2 minutes
-    }, 15000); 
+        if (loadingDiv) {
+            loadingDiv.style.opacity = '0';
+            setTimeout(() => {
+                loadingDiv.style.display = 'none';
+            }, 500);
+        }
+    }, 20000); 
 
 
 
@@ -32,8 +68,12 @@ document.addEventListener('DOMContentLoaded', () => {
       if (loadingDiv) {
         loadingDiv.style.display = "flex";
         setTimeout(() => {
-          loadingDiv.style.display = "none";
-        }, 10000);
+          loadingDiv.style.opacity = "0";
+          setTimeout(() => {
+            loadingDiv.style.display = "none";
+            loadingDiv.style.opacity = "1";
+          }, 400);
+        }, 800);
       }
 
       if (index === 0) {
@@ -124,7 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     // Start interval to display each full message every 2 seconds
-    timeoutMessage = setInterval(displayMessage, 2000);
+    let timeoutMessage = setInterval(displayMessage, 2000);
     
     const coreValues = document.querySelectorAll('.core-values ul li');
     const valOverlay = document.querySelector('.display-values-overlay');
@@ -287,7 +327,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const  moreBtn = document.querySelector('.more-button button');
     const prayerSect = document.querySelector('.prayer-section');
     const prayerVid = document.querySelector('.prayer-video');
-    const faqItems = document.querySelectorAll('.prayer-insight .faq-item');
     const  addmoreBtn = document.querySelector('.more-content button');
 
     let isExapnded = false;
@@ -317,11 +356,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if(IsExpanse) {
             prayerVid.style.display = 'flex';
             addmoreBtn.textContent = "Minimize";
-            faqItems.forEach(item => {
-                const allAns = item.querySelectorAll('.faq-answer');
-                allAns.forEach(f => f.style.display = 'none');
-            });
-
             prayerVid.scrollIntoView({
                 behavior: 'smooth',
                 block: 'center'
@@ -335,62 +369,112 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 
 
-    faqItems.forEach(faq => {
-        faq.addEventListener('click', () => {
-            toggleAnswer(faq);
-        })
-    })
+    const prayerItems = document.querySelectorAll('.prayer-insight > .faq-item');
+    const prayerPrev = document.querySelector('.prayer-prev');
+    const prayerNext = document.querySelector('.prayer-next');
+    const prayerCounterCurrent = document.querySelector('.prayer-count-current');
+    const prayerCounterTotal = document.querySelector('.prayer-count-total');
+    const prayerDotsContainer = document.querySelector('.prayer-dots');
+    let currentPrayer = 0;
 
-    function toggleAnswer(element) {
-        const answer = element.querySelector('.faq-answer'); // Get the answer related to the clicked question
-        if (answer.style.display === "none" || answer.style.display === "") {
-            answer.style.display = "block"; // Show the answer
-            answer.classList.add('show');
-        } else {
-            answer.style.display = "none"; // Hide the answer
-            answer.classList.remove('show');
+    function showPrayer(index) {
+        if (!prayerItems.length) return;
+        prayerItems.forEach(item => item.classList.remove('active'));
+        document.querySelectorAll('.prayer-dot').forEach(dot => dot.classList.remove('active'));
+        currentPrayer = (index + prayerItems.length) % prayerItems.length;
+        prayerItems[currentPrayer].classList.add('active');
+        document.querySelectorAll('.prayer-dot')[currentPrayer].classList.add('active');
+        if (prayerCounterCurrent) {
+            prayerCounterCurrent.textContent = String(currentPrayer + 1).padStart(2, '0');
         }
     }
-    
 
-    const newSaints = document.querySelectorAll('.suggested-saints li');
+    if (prayerCounterTotal) {
+        prayerCounterTotal.textContent = String(prayerItems.length).padStart(2, '0');
+    }
+
+    if (prayerDotsContainer) {
+        prayerItems.forEach((_, i) => {
+            const dot = document.createElement('button');
+            dot.type = 'button';
+            dot.className = 'prayer-dot' + (i === 0 ? ' active' : '');
+            dot.setAttribute('aria-label', 'Prayer ' + (i + 1));
+            dot.addEventListener('click', () => showPrayer(i));
+            prayerDotsContainer.appendChild(dot);
+        });
+    }
+
+    if (prayerPrev) prayerPrev.addEventListener('click', () => showPrayer(currentPrayer - 1));
+    if (prayerNext) prayerNext.addEventListener('click', () => showPrayer(currentPrayer + 1));
+
+    if (prayerItems[0]) prayerItems[0].classList.add('active');
+
     const searchOverlay = document.querySelector('.search-overlay');
     const searchClose = document.querySelector('.search-close');
-    const searchContent = document.querySelector('.search-result');
+    const searchContent = document.querySelector('.search-text-content');
     const searchImage = document.querySelector('.search-image');
 
     searchClose.onclick = () => {searchOverlay.style.display = 'none'};
 
-    newSaints.forEach(saint => {
-        saint.addEventListener('click', () => {
-            const dataHistory = saint.querySelector('.data-history');
-                // Toggle visibility
-                if (dataHistory.style.display === 'none' || dataHistory.style.display === '') {
-                    dataHistory.style.display = 'flex'; // Show
-                    saint.scrollIntoView({
-                        behavior:'smooth',
-                        block: "center"
-                    })
-                } else {
-                    dataHistory.style.display = 'none'; // Hide
-                }
+    const saintSlides = document.querySelectorAll('.saint-slide');
+    const saintPrev = document.querySelector('.saint-prev');
+    const saintNext = document.querySelector('.saint-next');
+    const saintCounterCurrent = document.querySelector('.saint-count-current');
+    const saintDotsContainer = document.querySelector('.saint-dots');
+    let currentSaint = 0;
+
+    function showSaint(index) {
+        if (!saintSlides.length) return;
+        saintSlides.forEach(slide => slide.classList.remove('active'));
+        document.querySelectorAll('.saint-dot').forEach(dot => dot.classList.remove('active'));
+        currentSaint = (index + saintSlides.length) % saintSlides.length;
+        saintSlides[currentSaint].classList.add('active');
+        document.querySelectorAll('.saint-dot')[currentSaint].classList.add('active');
+        if (saintCounterCurrent) {
+            saintCounterCurrent.textContent = String(currentSaint + 1).padStart(2, '0');
+        }
+    }
+
+    if (saintDotsContainer) {
+        saintSlides.forEach((_, i) => {
+            const dot = document.createElement('button');
+            dot.type = 'button';
+            dot.className = 'saint-dot' + (i === 0 ? ' active' : '');
+            dot.setAttribute('aria-label', 'Saint ' + (i + 1));
+            dot.addEventListener('click', () => showSaint(i));
+            saintDotsContainer.appendChild(dot);
         });
+    }
+
+    if (saintPrev) saintPrev.addEventListener('click', () => showSaint(currentSaint - 1));
+    if (saintNext) saintNext.addEventListener('click', () => showSaint(currentSaint + 1));
+
+    document.querySelectorAll('.saint-bio').forEach(p => {
+        const text = p.textContent;
+        const firstIndex = text.search(/\S/);
+        const leading = text.slice(0, firstIndex);
+        const wordMatch = text.slice(firstIndex).match(/^\S+/);
+        if (wordMatch) {
+            const word = wordMatch[0];
+            p.textContent = '';
+            p.innerHTML = leading + '<span class="drop-word">' + word + '</span>' + text.slice(firstIndex + word.length);
+        }
     });
 
    
 
     document.querySelectorAll('.quotes-about-st-chris .clipboard-icon').forEach(icon => {
         icon.addEventListener('click', () => {
-            const quote = icon.getAttribute('data-quote') + "- St. Christopher";
+            const quote = icon.getAttribute('data-quote') + " - St. Christopher";
             navigator.clipboard.writeText(quote)
                 .then(() => {
-                    // Change icon to checkmark
                     icon.innerHTML = '<i class="fas fa-check"></i>';
-                    
-                    // Set timeout to revert back to clipboard icon after 2 seconds (2000 milliseconds)
+                    icon.classList.add('copied');
+
                     setTimeout(() => {
-                        icon.innerHTML = ''; // Reverting back to clipboard icon
-                    }, 2000); // Change this duration as needed
+                        icon.innerHTML = '<i class="fas fa-copy"></i>';
+                        icon.classList.remove('copied');
+                    }, 2000);
                 })
                 .catch(err => {
                     console.error('Could not copy text: ', err);
@@ -398,23 +482,26 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    document.querySelectorAll('.quotes-about-st-chris li').forEach(li => {
-        li.addEventListener('click', () => {
-            const quote = li.textContent.trim() + "- St. Christopher";
-            navigator.clipboard.writeText(quote)
-                .then(() => {
-                    // Change icon to checkmark
-                    li.classList.add('copied');
-                    
-                    // Set timeout to revert back to clipboard icon after 2 seconds (2000 milliseconds)
-                    setTimeout(() => {
-                         li.classList.remove('copied'); // Reverting back to clipboard icon
-                    }, 2000); // Change this duration as needed
-                })
-                .catch(err => {
-                    console.error('Could not copy text: ', err);
-                });
-        });
+    const quoteSlides = document.querySelectorAll('.quote-slide');
+    const quoteDots = document.querySelectorAll('.quote-dot');
+    const quotePrev = document.querySelector('.quote-prev');
+    const quoteNext = document.querySelector('.quote-next');
+    let currentSlide = 0;
+
+    function showQuoteSlide(index) {
+        if (!quoteSlides.length) return;
+        quoteSlides.forEach(slide => slide.classList.remove('active'));
+        quoteDots.forEach(dot => dot.classList.remove('active'));
+        currentSlide = (index + quoteSlides.length) % quoteSlides.length;
+        quoteSlides[currentSlide].classList.add('active');
+        quoteDots[currentSlide].classList.add('active');
+    }
+
+    if (quotePrev) quotePrev.addEventListener('click', () => showQuoteSlide(currentSlide - 1));
+    if (quoteNext) quoteNext.addEventListener('click', () => showQuoteSlide(currentSlide + 1));
+
+    quoteDots.forEach(dot => {
+        dot.addEventListener('click', () => showQuoteSlide(parseInt(dot.dataset.slide)));
     });
     
 
@@ -435,10 +522,62 @@ document.addEventListener('DOMContentLoaded', () => {
         if (image) {
             searchImage.innerHTML = `<img src="${image}" alt="Inspiration Image">`;
         } else {
-            searchImage.innerHTML = ''; // Clear the image container if no image is provided
+            searchImage.innerHTML = '';
         }
-       
     }
+
+    const facilitySlides = document.querySelectorAll('.facility-slide');
+    const facilityPrev = document.querySelector('.facility-prev');
+    const facilityNext = document.querySelector('.facility-next');
+    const facilityCounterCurrent = document.querySelector('.facility-count-current');
+    const facilityDotsContainer = document.querySelector('.facility-dots');
+    let currentFacility = 0;
+    let facilityTimer = null;
+
+    function showFacility(index) {
+        if (!facilitySlides.length) return;
+        facilitySlides.forEach(slide => slide.classList.remove('active'));
+        document.querySelectorAll('.facility-dot').forEach(dot => dot.classList.remove('active'));
+        currentFacility = (index + facilitySlides.length) % facilitySlides.length;
+        facilitySlides[currentFacility].classList.add('active');
+        document.querySelectorAll('.facility-dot')[currentFacility].classList.add('active');
+        if (facilityCounterCurrent) {
+            facilityCounterCurrent.textContent = String(currentFacility + 1).padStart(2, '0');
+        }
+    }
+
+    function startFacilityTimer() {
+        stopFacilityTimer();
+        facilityTimer = setInterval(() => showFacility(currentFacility + 1), 4500);
+    }
+
+    function stopFacilityTimer() {
+        if (facilityTimer) {
+            clearInterval(facilityTimer);
+            facilityTimer = null;
+        }
+    }
+
+    if (facilityDotsContainer) {
+        facilitySlides.forEach((_, i) => {
+            const dot = document.createElement('button');
+            dot.type = 'button';
+            dot.className = 'facility-dot' + (i === 0 ? ' active' : '');
+            dot.setAttribute('aria-label', 'Facility ' + (i + 1));
+            dot.addEventListener('click', () => { showFacility(i); startFacilityTimer(); });
+            facilityDotsContainer.appendChild(dot);
+        });
+    }
+
+    if (facilityPrev) facilityPrev.addEventListener('click', () => { showFacility(currentFacility - 1); startFacilityTimer(); });
+    if (facilityNext) facilityNext.addEventListener('click', () => { showFacility(currentFacility + 1); startFacilityTimer(); });
+
+    const facilityCarousel = document.querySelector('.facility-carousel');
+    if (facilityCarousel) {
+        facilityCarousel.addEventListener('mouseenter', stopFacilityTimer);
+        facilityCarousel.addEventListener('mouseleave', startFacilityTimer);
+    }
+startFacilityTimer();
 
 
 });
