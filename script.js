@@ -41,9 +41,9 @@ document.addEventListener('DOMContentLoaded', () => {
             loadingDiv.style.opacity = '0';
             setTimeout(() => {
                 loadingDiv.style.display = 'none';
-            }, 500);
+            }, 2500);
         }
-    }, 20000); 
+    }, 2000); 
 
 
 
@@ -605,3 +605,10 @@ document.addEventListener("DOMContentLoaded", function () {
         observer.observe(item);
     });
 });
+
+// Set current year dynamically in fees and vacancies headings
+(function setCurrentYear() {
+    const year = new Date().getFullYear();
+    document.getElementById('fee-year').textContent = year;
+    document.getElementById('vacancy-year').textContent = year;
+})();
