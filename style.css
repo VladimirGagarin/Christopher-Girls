@@ -3777,6 +3777,10 @@ strong {
     }
 
     /* About */
+    #About {
+        padding: 18px 10px;
+    }
+
     #About .about,
     #About .our-mission,
     #About .our-vision,
@@ -3784,6 +3788,7 @@ strong {
     #About .principal-greeting {
         padding: 20px 14px;
         min-height: auto;
+        width: 100%;
     }
 
     #About .about p,
@@ -3792,6 +3797,10 @@ strong {
     #About .core-values p {
         font-size: 1rem;
         line-height: 1.65;
+    }
+
+    .core-values ul {
+        max-width: 100%;
     }
 
     .facility-slide {
@@ -3922,10 +3931,18 @@ strong {
     }
 
     /* Curriculum */
+    .subject-areas,
+    .special-programs,
+    .curriculum-highlights {
+        padding: 20px 12px;
+        width: 100%;
+    }
+
     .subject-areas ul,
     .special-programs ul,
     .curriculum-highlights ul {
         grid-template-columns: 1fr;
+        width: 100%;
     }
 
     .prayer-section {
@@ -4207,6 +4224,24 @@ strong {
 
     section h2 {
         font-size: 1.5rem;
+    }
+
+    #About {
+        padding: 12px 6px;
+    }
+
+    #About .about,
+    #About .our-mission,
+    #About .our-vision,
+    #About .core-values,
+    #About .principal-greeting {
+        padding: 18px 10px;
+    }
+
+    .subject-areas,
+    .special-programs,
+    .curriculum-highlights {
+        padding: 16px 8px;
     }
 
     .intro-message-div p span {
