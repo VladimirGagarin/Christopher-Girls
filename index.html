@@ -1334,7 +1334,24 @@
             </div>
 
             <div class="video-field">
-                <video src="vid.mp4" controls preload="metadata"></video>
+                <div class="advert-panel">
+                    <span class="advert-badge"><i class="fas fa-video" aria-hidden="true"></i> School Advert</span>
+                    <h3 class="advert-title">Watch Our Story Unfold</h3>
+                    <div class="advert-grid">
+                        <div class="advert-media">
+                            <video src="vid.mp4" controls preload="metadata"></video>
+                        </div>
+                        <div class="advert-body">
+                            <h4>Dear Girl Who Dares to Dream</h4>
+                            <p class="advert-message">To every girl chasing a wonderful dream too big for the horizon &mdash; bring it here. You will find teachers who coach, friends who cheer, and prayer rooms that remind you nothing is ever too heavy to carry. Dream loudly; these halls were built to make room.</p>
+                            <blockquote class="advert-quote">
+                                <p>&ldquo;Every great woman once sat in a classroom wondering if she could. We exist to end that wonder.&rdquo;</p>
+                                <cite>&mdash; Ann Mwithiga</cite>
+                            </blockquote>
+                            <p class="advert-fact"><span class="story-fact-label">Fun Fact</span> Since 2009, St. Christopher Girls High School has shaped thousands of young women in Machakos &mdash; and its name honours the patron saint of travellers, because every student here is on a journey worth taking.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             
@@ -1344,7 +1361,7 @@
         <section id="contact" class="contact-section">
 
             <div class="fees">
-               <h2>St. Christopher Girls High School – School Fees Breakdown (as of 2025)</h2>
+               <h2>St. Christopher Girls High School – School Fees Breakdown (as of <span id="fee-year">2025</span>)</h2>
                 <table>
                     <thead>
                         <tr>
@@ -1382,39 +1399,71 @@
             
             <ul class="contact-list">
                 <li class="contact-item">
-                    <span class="contact-label">Phone:</span>
-                    <a href="tel:+254703452010" class="contact-link">+254 702 452 010</a>
+                    <div class="contact-avatar"><i class="fas fa-user-tie" aria-hidden="true"></i></div>
+                    <div class="contact-info">
+                        <span class="contact-label">Secretary &middot; Office Line</span>
+                        <a href="tel:+254703452010" class="contact-link">+254 702 452 010</a>
+                    </div>
+                    <a href="tel:+254703452010" class="contact-call" aria-label="Call the secretary"><i class="fas fa-phone" aria-hidden="true"></i></a>
                 </li>
 
                 <li class="contact-item">
-                    <span class="contact-label">Phone:</span>
-                    <a href="tel:+254737093991" class="contact-link">+254 737 093 991</a>
+                    <div class="contact-avatar"><i class="fas fa-user-tie" aria-hidden="true"></i></div>
+                    <div class="contact-info">
+                        <span class="contact-label">Secretary &middot; Admissions Line</span>
+                        <a href="tel:+254737093991" class="contact-link">+254 737 093 991</a>
+                    </div>
+                    <a href="tel:+254737093991" class="contact-call" aria-label="Call the admissions desk"><i class="fas fa-phone" aria-hidden="true"></i></a>
                 </li>
 
                 <li class="contact-item">
-                    <span class="contact-label">Phone:</span>
-                    <a href="tel:+254715209403" class="contact-link">+254 715209403</a>
+                    <div class="contact-avatar"><i class="fas fa-user-tie" aria-hidden="true"></i></div>
+                    <div class="contact-info">
+                        <span class="contact-label">Secretary &middot; Direct Mobile</span>
+                        <a href="tel:+254715209403" class="contact-link">+254 715 209 403</a>
+                    </div>
+                    <a href="tel:+254715209403" class="contact-call" aria-label="Call the secretary's mobile"><i class="fas fa-phone" aria-hidden="true"></i></a>
                 </li>
+
                 <li class="contact-item">
-                    <span class="contact-label">Email:</span>
-                    <a href="mailto:stchristophergirlsmks@gmail.com" class="contact-link">stchristophergirlsmks@gmail.com</a>
+                    <div class="contact-avatar"><i class="fas fa-user-tie" aria-hidden="true"></i></div>
+                    <div class="contact-info">
+                        <span class="contact-label">Secretary &middot; Email</span>
+                        <a href="mailto:stchristophergirlsmks@gmail.com" class="contact-link">stchristophergirlsmks@gmail.com</a>
+                    </div>
+                    <a href="mailto:stchristophergirlsmks@gmail.com" class="contact-call" aria-label="Email the secretary"><i class="fas fa-envelope" aria-hidden="true"></i></a>
                 </li>
             </ul>
 
             <div class="vacancies">
-                 <h2>Form One and Transfer Vacancies (as of 2025 Admissions)</h2>
+                 <h2>Form One and Transfer Vacancies (as of <span id="vacancy-year">2025</span> Admissions)</h2>
                 <div class="groups">
 
-                    <div class="form-one">
-                        <h2>Form One</h2>
+                    <div class="vacancy-card vacancy-form-one">
+                        <span class="vacancy-number">01</span>
+                        <div class="vacancy-icon"><i class="fas fa-graduation-cap" aria-hidden="true"></i></div>
+                        <h3>Form One</h3>
+                        <span class="vacancy-status"><span class="vacancy-dot"></span>Open</span>
+                        <p>Join our Form One 2025 intake</p>
+                        <a href="tel:+254703452010" class="vacancy-apply">Apply <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
                     </div>
 
-                    <div class="form-Two">
-                        <h2>Form Two</h2>
+                    <div class="vacancy-card vacancy-form-two">
+                        <span class="vacancy-number">02</span>
+                        <div class="vacancy-icon"><i class="fas fa-users" aria-hidden="true"></i></div>
+                        <h3>Form Two</h3>
+                        <span class="vacancy-status"><span class="vacancy-dot"></span>Transfers</span>
+                        <p>Limited transfer slots this term</p>
+                        <a href="tel:+254737093991" class="vacancy-apply">Apply <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
                     </div>
 
-                    <div class="form-Three">
-                        <h2>Form Three</h2>
+                    <div class="vacancy-card vacancy-form-three">
+                        <span class="vacancy-number">03</span>
+                        <div class="vacancy-icon"><i class="fas fa-map-location-dot" aria-hidden="true"></i></div>
+                        <h3>Form Three</h3>
+                        <span class="vacancy-status"><span class="vacancy-dot"></span>Soon</span>
+                        <p>A few places remain for eager learners</p>
+                        <a href="tel:+254715209403" class="vacancy-apply">Apply <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
                     </div>
 
                 </div>
